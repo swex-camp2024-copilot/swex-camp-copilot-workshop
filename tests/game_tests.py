@@ -7,7 +7,9 @@ from game.game import Game, INITIAL_SCORE, INVALID_QUESTION_PENALTY, CHARACTER_N
 class TestGame(unittest.TestCase):
     def setUp(self):
         self.bot1 = Mock()
+        self.bot1.name = 'Bot 1'
         self.bot2 = Mock()
+        self.bot2.name = 'Bot 2'
         self.referee = Mock()
         self.game = Game(self.bot1, self.bot2, [self.referee])
 
