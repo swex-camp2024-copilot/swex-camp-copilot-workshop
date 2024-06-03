@@ -13,6 +13,7 @@ class ValidationResult(Enum):
 class RefereeBot(ABC):
     def __init__(self, name):
         self.name = name
+        self.character = ""
 
     @abstractmethod
     def set_character(self, name):
@@ -23,6 +24,6 @@ class RefereeBot(ABC):
         pass
 
     @abstractmethod
-    def validate_response(self, question: str, query: str) -> ValidationResult:
+    def validate_answer(self, question: str, answer: str) -> ValidationResult:
         # Logic for making a decision based on the game state
         pass

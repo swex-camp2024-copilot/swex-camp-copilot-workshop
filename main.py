@@ -1,6 +1,6 @@
 from pkgutil import walk_packages
 
-from game.tournament import play
+from game.tournament import Tournament
 
 
 def load(package, condition):
@@ -26,7 +26,8 @@ def main():
         print("No referees found")
         return
 
-    play(players, referees)
+    tournament = Tournament(players, referees)
+    tournament.play()
 
 
 if __name__ == "__main__":
