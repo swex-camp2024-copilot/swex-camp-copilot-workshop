@@ -82,6 +82,8 @@ def play(players, referees) -> PlayerBot:
                     # If there is an odd number of players, the last player advances to the next round
                     winners.append(players[i])
             players = winners
+            for player in players:
+                player.reset()
 
         # The last player is the winner of the tournament
         print(f"The winner of the tournament is {players[0].name}")

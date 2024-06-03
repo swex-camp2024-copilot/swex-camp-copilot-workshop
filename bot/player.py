@@ -18,3 +18,9 @@ class PlayerBot(ABC):
     def respond(self, query: str) -> str:
         # Logic for making a decision based on the game state
         pass
+        pass
+
+    @abstractmethod
+    def reset(self):
+        # Logic for making a decision based on the game state
+        pass

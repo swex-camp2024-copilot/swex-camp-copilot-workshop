@@ -21,6 +21,7 @@ characters = ["Alber Einstein", "Isaac Newton", "Bill Gates", "Steve Jobs",
 
 
 class StupidPlayerBot(PlayerBot):
+
     def __init__(self):
         super().__init__("Stupid Bot")
         self.character = ""
@@ -40,3 +41,6 @@ class StupidPlayerBot(PlayerBot):
             return "Yes"
         else:
             return "No"
+
+    def reset(self):
+        self.character = ""
