@@ -2,7 +2,7 @@ from player import PlayerBot
 from openai import OpenAI
 
 
-class ConcretePlayerBot(PlayerBot):
+class WisaOnanPlayerBot(PlayerBot):
     def __init__(self):
         super().__init__('Concrete Player')
         self.history = []  # Add this line to initialize the list
