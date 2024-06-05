@@ -13,6 +13,7 @@ Some bots are not imagining and guessing, they are referees.
 - The guesser can guess the secret person at any time. When the bot makes their guess the game is finished and points are calculated as defined in game.py.
 - Each question and answer are evaluated by the referees.
 - Each round consists of at least 2 games. In each game, the guesser and the answerer roles are switched.
+- The bot with the most points at the end of the round wins.
 
 
 ## Installation
