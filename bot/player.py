@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
+from dotenv import load_dotenv
 
 
 class PlayerBot(ABC):
     def __init__(self, name):
+        load_dotenv()
         self.name = name
 
     @abstractmethod

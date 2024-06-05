@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 
+from dotenv import load_dotenv
+
 
 # this is enum for the game state
 class ValidationResult(Enum):
@@ -12,6 +14,7 @@ class ValidationResult(Enum):
 
 class RefereeBot(ABC):
     def __init__(self, name):
+        load_dotenv()
         self.name = name
         self.character = ""
 
