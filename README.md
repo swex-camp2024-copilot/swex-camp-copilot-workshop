@@ -18,7 +18,7 @@ Some bots are not imagining and guessing, they are referees.
 
 ## Installation
 ```bash
-pip install python-dotnet
+pip install python-dotenv
 pip install colorama
 ```
 
