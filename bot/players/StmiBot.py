@@ -6,7 +6,7 @@ class StmiBot(PlayerBot):
 
     def __init__(self):
         super().__init__("StmiBot")
-        self.client = OpenAI(api_key="k-hackathon-service-account-FPRC8XOzr7lDbNWTFTxIT3BlbkFJ7CtQrCqq5HbIUqZtouBf")
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.messages = []
 
     def choose_character(self):
