@@ -5,7 +5,7 @@ model = "gpt-3.5-turbo"
 
 class TotallyFairAndIndependentReferee(RefereeBot):
     def __init__(self):
-        super().__init__("Hrvoje and Lorenzo's Unbeatable Referee")
+        super().__init__("Totally Fair And Independent  Referee")
         self.character = ""
 
     def set_character(self, name):
