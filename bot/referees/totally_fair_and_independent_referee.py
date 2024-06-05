@@ -4,6 +4,10 @@ from openai import OpenAI
 model = "gpt-3.5-turbo"
 
 class TotallyFairAndIndependentReferee(RefereeBot):
+    def __init__(self):
+        super().__init__("Hrvoje and Lorenzo's Unbeatable Referee")
+        self.character = ""
+
     def set_character(self, name):
         self.character = name
 
