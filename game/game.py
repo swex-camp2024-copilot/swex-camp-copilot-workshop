@@ -9,6 +9,7 @@ from bot.referee import ValidationResult
 INITIAL_SCORE = 25
 EXCEPTION_PENALTY = 5
 INVALID_QUESTION_PENALTY = 50
+CHARACTER_NOT_SELECTED_PENALTY = 50
 CHARACTER_NOT_GUESSED_PENALTY = 25
 DISQUALIFICATION_PENALTY = 1000
 
@@ -40,7 +41,15 @@ class Game:
         self.print_scores()
 
     def play_round(self, answerer: PlayerBot, guesser: PlayerBot):
-        secret_character = answerer.choose_character()
+        secret_character = ""
+        try:
+            secret_character = answerer.choose_character()
+        except Exception as e:
+            print(Fore.RED + "OOPS SOMETHING WENT WRONG!")
+            print(Style.RESET_ALL)
+            self.scores[answerer] -= CHARACTER_NOT_SELECTED_PENALTY
+            return
+
         print(Fore.GREEN + answerer.name + " has selected the secret character:\n" + secret_character)
         print(Style.RESET_ALL)
         self.set_character_for_referees(secret_character)

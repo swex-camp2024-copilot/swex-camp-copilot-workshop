@@ -1,4 +1,4 @@
-from player import PlayerBot
+from bot.player import PlayerBot
 from openai import OpenAI
 
 
