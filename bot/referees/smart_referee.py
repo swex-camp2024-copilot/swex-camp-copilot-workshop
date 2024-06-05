@@ -11,9 +11,9 @@ class SmartReferee(RefereeBot):
         self.character = name
 
     def validate_question(self, question):
-        gptAnswer = self.askChatGPT(f"You should analyze players questions in 'Guess who am I' game. Player can either ask question about character or try to guess who the character is. Question: [{question}]. Is it a valid question for 'Guess who am I?' game? Please answer yes or no without interpunction.")
+        gptAnswer = self.askChatGPT(f"You should analyze players questions in 'Guess who am I' game. Player can either ask something about character or try to guess who the character is. Question: [{question}]. Is it a valid question for 'Guess who am I?' game? Please answer yes or no without interpunction.")
         if gptAnswer == "yes":
-            gptAnswer = self.askChatGPT(f"You should analyze players questions in 'Guess who am I' game. Player can either ask question about character or try to guess who the character is. Question: [{question}]. Is the player trying to guess who the character is? Please answer yes or no without interpunction.")
+            gptAnswer = self.askChatGPT(f"You should analyze players questions in 'Guess who am I' game. Player can either ask something about character or try to guess who the character is. Question: [{question}]. Is the player trying to guess who the character is with this question? Please answer yes or no without interpunction.")
             if (gptAnswer == "yes"):
                 gptAnswer = self.askChatGPT(f"Answer this question just by telling character name: [{question}].")
                 if gptAnswer == self.character.lower():
