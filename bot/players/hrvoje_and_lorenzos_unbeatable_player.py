@@ -1,24 +1,23 @@
 import os
 
 import openai
+from openai.types.chat import ChatCompletion
 
 from bot.player import PlayerBot
 
 
 class HrvojeAndLorenzosUnbeatablePlayer(PlayerBot):
-    API_KEY = os.getenv("OPENAI_API_KEY")
 
     def __init__(self):
-        super().__init__()
+        super().__init__("Hrvoje and Lorenzo's Unbeatable Player")
         # create openai instance with api key
-        self.openai = openai.OpenAI(api_key=self.API_KEY)
+        self.openai = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.character = ""
         self.ask_history = ""
-        self.name = "Hrvoje and Lorenzo's Unbeatable Player"
 
     def choose_character(self) -> str:
         # Open a chat and ask a prompt
-        response = self.openai.chat.completions.create(
+        completion: ChatCompletion = self.openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a machine that chooses a celebrity and only answers with name and surname."},
@@ -26,13 +25,13 @@ class HrvojeAndLorenzosUnbeatablePlayer(PlayerBot):
             ],
         )
         # Extract the assistant's reply
-        self.character = response['choices'][0]['message']['content']
+        self.character = completion.choices[0].message.content
         return self.character
 
     def ask_question(self, query: str) -> str:
         # Open a chat and ask a question
         self.ask_history += query + "\n"
-        response = self.openai.chat.completions.create(
+        completion: ChatCompletion = self.openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a machine trying to guess a celebrity."
@@ -44,11 +43,13 @@ class HrvojeAndLorenzosUnbeatablePlayer(PlayerBot):
                 {"role": "user", "content": self.ask_history},
             ],
         )
-        return response['choices'][0]['message']['content']
+        question = completion.choices[0].message.content
+        self.ask_history += question + "\n"
+        return question
 
     def respond(self, query: str) -> str:
         # Open a chat and ask a question
-        response = self.openai.chat.completions.create(
+        completion: ChatCompletion = self.openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": f"You are a machine that is impersonating {self.character}."
@@ -57,7 +58,7 @@ class HrvojeAndLorenzosUnbeatablePlayer(PlayerBot):
                 {"role": "user", "content": query},
             ],
         )
-        return response['choices'][0]['message']['content']
+        return completion.choices[0].message.content
 
     def reset(self) -> None:
         self.ask_history = ""
