@@ -29,7 +29,7 @@ pip install colorama
 - __init__ method must take only the self parameter
 - implement all abstract methods
 
-## Player bot creation
+## Referee bot creation
 
 - Create a new python file in the `bot\referees` directory.
 - Bot must extend the `RefereeBot` class.
